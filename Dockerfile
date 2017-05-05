@@ -9,3 +9,4 @@ RUN sudo apt-get update \
 &&  sudo apt-get install -y dotnet-dev-1.0.3 \
 &&  sudo apt-get remove -y apt-transport-https \
 &&  rm -rf /var/lib/apt/lists/*
+
