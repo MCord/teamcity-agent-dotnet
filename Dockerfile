@@ -10,3 +10,13 @@ RUN apt-get update \
 &&  apt-get remove -y apt-transport-https \
 &&  rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update \
+ && apt-get install -y wget \
+ && wget -q -O NuGet.exe 'https://github.com/NuGet/Home/releases/download/3.2/nuget.exe' \
+ && mono NuGet.exe install fake -ExcludeVersion -OutputDirectory /usr/lib -Verbosity quiet \
+ && echo "#!/bin/bash" > /usr/local/bin/fake \
+ && echo "mono /usr/lib/FAKE/tools/FAKE.exe \"\$@\"" >> /usr/local/bin/fake  \
+ && chmod +x /usr/local/bin/fake         \                                                                 \
+ && rm NuGet.exe \
+ && rm -rf /var/lib/apt/lists/* \
+
