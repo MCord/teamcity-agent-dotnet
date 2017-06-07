@@ -9,6 +9,7 @@ RUN apt-get update \
 &&  apt-get install -y dotnet-dev-1.0.4 \
 &&  apt-get remove -y apt-transport-https \ 
 &&  apt-get install -y mono-devel
+&&  echo "Europe/Paris" > /etc/timezone 
 
 COPY build.bootstrap.csproj .build/bootsrap.csproj
 
