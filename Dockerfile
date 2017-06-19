@@ -27,5 +27,19 @@ RUN apt-get update \
 &&  apt-get install -y software-properties-common \
 &&  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
 &&  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
-&&  apt-get install -y docker=1.5-1 \
+&&  apt-get install -y docker=1.5-1
+
+# Install nodejs and npm
+RUN apt-get update \
+&&  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+&&  add-apt-repository "deb https://deb.nodesource.com/node_6.x xenial main" \
+&&  apt-get update \
+&&  apt-get install -y --allow-unauthenticated nodejs
+
+# Install yarn
+RUN apt-get update \
+&&  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+&&  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+&&  apt-get update \
+&&  apt-get install -y yarn \
 &&  apt-get clean all
