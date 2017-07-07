@@ -20,15 +20,6 @@ RUN dotnet restore .build/bootsrap.csproj \
 && echo "mono ~/.nuget/packages/fake/4.61.3/tools/FAKE.exe \"\$@\"" >> /usr/local/bin/fake \
 && chmod +x /usr/local/bin/fake
 
-# Install docker
-RUN apt-get update \ 
-&&  apt-get install -y apt-transport-https \
-&&  apt-get install -y curl \
-&&  apt-get install -y software-properties-common \
-&&  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-&&  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
-&&  apt-get install -y docker=1.5-1
-
 # Install nodejs and npm
 RUN apt-get update \
 &&  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
