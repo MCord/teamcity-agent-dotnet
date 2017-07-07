@@ -1,4 +1,5 @@
 FROM jetbrains/teamcity-agent:2017.1.1
+LABEL maintainer="mkordi@gmail.com"
 
 #Known issue:
 # tzdata should be installed or nuget fails to download.
