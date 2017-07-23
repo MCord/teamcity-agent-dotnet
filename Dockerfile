@@ -50,7 +50,7 @@ RUN apt-get update \
 &&  apt-get clean all
 
 
-echo tool-dotnetcore=1.0.4    >> /data/teamcity_agent/conf/buildAgent.properties \
+RUN echo tool-dotnetcore=1.0.4    >> /data/teamcity_agent/conf/buildAgent.properties \
 && echo tool-mono=4.2         >> /data/teamcity_agent/conf/buildAgent.properties \
 && echo tool-fake=4.61.3      >> /data/teamcity_agent/conf/buildAgent.properties \
 && echo tool-node=v6.11.0     >> /data/teamcity_agent/conf/buildAgent.properties \
