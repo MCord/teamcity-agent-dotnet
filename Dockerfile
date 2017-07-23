@@ -14,9 +14,6 @@ RUN apt-get update \
 &&  apt-get install -y mono-devel \
 &&  apt-get install -y tzdata
 
-ENV tool-dotnetcore "2.0.0-preview2"
-ENV tool-mono "4.2"
-
 COPY build.bootstrap.csproj .build/bootsrap.csproj
 
 RUN dotnet restore .build/bootsrap.csproj \
@@ -24,7 +21,6 @@ RUN dotnet restore .build/bootsrap.csproj \
 && echo "mono ~/.nuget/packages/fake/4.61.3/tools/FAKE.exe \"\$@\"" >> /usr/local/bin/fake \
 && chmod +x /usr/local/bin/fake
 
-ENV tool-fake "4.61.3"
 
 # Install nodejs and npm
 RUN apt-get update \
@@ -33,7 +29,6 @@ RUN apt-get update \
 &&  apt-get update \
 &&  apt-get install -y --allow-unauthenticated nodejs
 
-ENV tool-node "v6.11.0"
 
 # Install yarn
 RUN apt-get update \
@@ -43,7 +38,6 @@ RUN apt-get update \
 &&  apt-get install -y yarn \
 &&  apt-get clean all
 
-ENV tool-yarn "0.24.6"
 
 # Install docker
 RUN apt-get update \ 
@@ -55,4 +49,10 @@ RUN apt-get update \
 &&  apt-get install -y docker \
 &&  apt-get clean all
 
-env tool-docker "1.13.0"
+
+echo tool-dotnetcore=1.0.4    >> /data/teamcity_agent/conf/buildAgent.properties \
+&& echo tool-mono=4.2         >> /data/teamcity_agent/conf/buildAgent.properties \
+&& echo tool-fake=4.61.3      >> /data/teamcity_agent/conf/buildAgent.properties \
+&& echo tool-node=v6.11.0     >> /data/teamcity_agent/conf/buildAgent.properties \
+&& echo tool-yarn=0.24.6      >> /data/teamcity_agent/conf/buildAgent.properties \
+&& echo tool-docker=1.13.0    >> /data/teamcity_agent/conf/buildAgent.properties 
