@@ -10,11 +10,11 @@ RUN apt-get update \
 &&  echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list \
 &&  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893 \                                                                    
 &&  apt-get update \
-&&  apt-get install -y dotnet-sdk-2.0.0-preview2-006497 \ 
+&&  apt-get install -y dotnet-sdk-1.0.4 \ 
 &&  apt-get install -y mono-devel \
 &&  apt-get install -y tzdata
 
-ENV tool-dotnetcore "2.0.0-preview2"
+ENV tool-dotnetcore "1.0.4"
 ENV tool-mono "4.2"
 
 COPY build.bootstrap.csproj .build/bootsrap.csproj
