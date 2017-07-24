@@ -38,21 +38,9 @@ RUN apt-get update \
 &&  apt-get install -y yarn \
 &&  apt-get clean all
 
-
-# Install docker
-RUN apt-get update \ 
-&&  apt-get install -y apt-transport-https \
-&&  apt-get install -y curl \
-&&  apt-get install -y software-properties-common \
-&&  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
-&&  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
-&&  apt-get install -y docker \
-&&  apt-get clean all
-
-
-RUN echo tool-dotnetcore=1.0.4    >> /data/teamcity_agent/conf/buildAgent.properties \
-&& echo tool-mono=4.2         >> /data/teamcity_agent/conf/buildAgent.properties \
-&& echo tool-fake=4.61.3      >> /data/teamcity_agent/conf/buildAgent.properties \
-&& echo tool-node=v6.11.0     >> /data/teamcity_agent/conf/buildAgent.properties \
-&& echo tool-yarn=0.24.6      >> /data/teamcity_agent/conf/buildAgent.properties \
-&& echo tool-docker=1.13.0    >> /data/teamcity_agent/conf/buildAgent.properties 
+# expose environment variables
+ENV tool_dotnetcore=1.0.4
+ENV tool_mono=4.2         
+ENV tool_fake=4.61.3      
+ENV tool_node=v6.11.0     
+ENV tool_yarn=0.24.6        
