@@ -53,4 +53,5 @@ ENV tool_dotnetcore=1.0.4
 ENV tool_mono=4.2         
 ENV tool_fake=4.61.3      
 ENV tool_node=v6.11.0     
-ENV tool_yarn=0.24.6        
+ENV tool_yarn=0.24.6 
+ENV tool_docker=1.3.0       
