@@ -38,6 +38,15 @@ RUN apt-get update \
 &&  apt-get install -y yarn \
 &&  apt-get clean all
 
+# Install docker
+RUN apt-get update \ 
+&&  apt-get install -y apt-transport-https \
+&&  apt-get install -y curl \
+&&  apt-get install -y software-properties-common \
+&&  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+&&  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" \
+&&  apt-get install -y docker \
+&&  apt-get clean all
 
 # expose environment variables
 ENV tool_dotnetcore=1.0.4
