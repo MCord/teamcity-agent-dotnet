@@ -1,5 +1,5 @@
 # teamcity-agent-dotnet
-A teamcity agent docker with dotnet SDK. use different tags for different SDK framework versions.
+A teamcity agent docker container with dotnet SDK. use different tags for different framework versions.
 
 This image contains:
 * dotnet core sdk
