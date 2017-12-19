@@ -1,4 +1,4 @@
-FROM jetbrains/teamcity-agent:2017.1.1
+FROM jetbrains/teamcity-agent:2017.2
 LABEL maintainer="mkordi@gmail.com"
 
 #Known issue:
@@ -15,10 +15,11 @@ RUN apt-get update \
 # Install dotnet
 RUN apt-get update \ 
 &&  apt-get install apt-transport-https \
-&&  echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list \
-&&  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893 \
+&& curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
+&& mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
+&& echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list \
 &&  apt-get update \
-&&  apt-get install -y dotnet-sdk-2.0.0
+&&  apt-get install -y dotnet-sdk-2.1.3
 
 COPY build.bootstrap.csproj .build/bootsrap.csproj
 
@@ -53,8 +54,8 @@ RUN apt-get update \
 &&  apt-get clean all
 
 # expose environment variables
-ENV tool_dotnetcore=2.0.0
-ENV tool_mono=5.2.0.224
+ENV tool_dotnetcore=2.1.3
+ENV tool_mono=5.4.1.6
 ENV tool_fake=4.61.3
-ENV tool_node=6.11.3
-ENV tool_yarn=1.1.0
+ENV tool_node=6.12.2
+ENV tool_yarn=1.3.2
