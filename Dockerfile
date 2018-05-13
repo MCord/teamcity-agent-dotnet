@@ -54,7 +54,7 @@ RUN apt-get update \
 &&  apt-get clean all
 
 # expose environment variables
-ENV tool_dotnetcore=2.1.3
+ENV tool_dotnetcore=2.1.300-rc1
 ENV tool_mono=5.4.1.6
 ENV tool_fake=4.61.3
 ENV tool_node=6.12.2
