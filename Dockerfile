@@ -19,7 +19,7 @@ RUN apt-get update \
 && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
 && echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list \
 &&  apt-get update \
-&&  apt-get install -y dotnet-sdk-2.1.3
+&&  apt-get install -y dotnet-sdk-2.1
 
 COPY build.bootstrap.csproj .build/bootsrap.csproj
 
@@ -54,8 +54,8 @@ RUN apt-get update \
 &&  apt-get clean all
 
 # expose environment variables
-ENV tool_dotnetcore=2.1.3
+ENV tool_dotnetcore=2.1
 ENV tool_mono=5.4.1.6
 ENV tool_fake=4.61.3
-ENV tool_node=6.12.2
-ENV tool_yarn=1.3.2
+ENV tool_node=6.14.2
+ENV tool_yarn=1.7.0
